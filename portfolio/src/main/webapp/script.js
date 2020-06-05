@@ -12,21 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-// function playRoulette() {
-//   const greetings =
-//       ['Blank!!!', 'Blank', 'Blank!', 'Blank!!', 'Bullet.. you died!']
-
-//   // Pick a random greeting.
-//   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-//   // Add it to the page.
-//   const greetingContainer = document.getElementById('roulette-container');
-//   greetingContainer.innerText = greeting;
-// }
-
 
 /**
  * Adds a random roulette round to the page.
