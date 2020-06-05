@@ -15,14 +15,30 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+// function playRoulette() {
+//   const greetings =
+//       ['Blank!!!', 'Blank', 'Blank!', 'Blank!!', 'Bullet.. you died!']
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+//   // Pick a random greeting.
+//   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+
+//   // Add it to the page.
+//   const greetingContainer = document.getElementById('roulette-container');
+//   greetingContainer.innerText = greeting;
+// }
+
+
+/**
+ * Adds a random roulette round to the page.
+ */
+function playRoulette() {
+  const rouletteRounds =
+      ['Blank!!!', 'Blank!', 'Blank!!', 'BANG...\n You died!☠☠']
+
+  // Pick a random roulette round.
+  const roulette = rouletteRounds[Math.floor(Math.random() * rouletteRounds.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const rouletteContainer = document.getElementById('roulette-container');
+  rouletteContainer.innerText = roulette;
 }

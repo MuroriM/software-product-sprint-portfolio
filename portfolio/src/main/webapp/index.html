@@ -4,15 +4,48 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      .custom {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+      }
+    </style>
     <script src="script.js"></script>
   </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+    <body id="body" class="custom">
+      <div id="links">
+        <button class="button blue" style="float: right;" onclick="window.location.href='https://www.linkedin.com/in/murorimutethia/';">LinkedIn</button>
+        <button class="button blue" style="float: right;" onclick="window.location.href='https://github.com/MuroriM';">Github</button>
+      </div>
+      <div id="main_body">
+        <h1>Hi, I'm Murori</h1>
+        <p>This is my portfolio.</p>
+        <h2>Click here play Russian Roulette 🔫</h2>
+        <button onclick="playRoulette()" class="button blue">Play</button>
+        <div id="roulette-container"></div>
+      </div>
+      <div id=bottom class="row">
+        <div id="likes" class="column">
+          <h3 class="lowertext">Some of my hobbies are:</h3>
+          <ul class="lowertext">
+            <li>Hiking</li>
+            <li>Biking</li>
+            <li>Hanging out with friends</li>
+            <li>Travelling</li>
+            <li>Philosophy debates</li>
+            <li>Playing video games</li>
+          </ul>
+        </div>
+        <div id="projects" class="column">
+          <h3 class="lowertext">Some of the projects I have worked on:</h3>
+          <ul class="lowertext">
+            <li>Yale Tech Conserve</li>
+            <li>Microsoft Yale Summarization reasearch</li>
+            <li>Deliverus Online supermarkets</li>
+            <li>Naicode CBO</li>
+            <li>Conceptual Dependency Research</li>
+            <li>Shamiri mental health project</li>
+          </ul>
+        </div>
+      </div>
   </body>
 </html>
