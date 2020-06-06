@@ -30,26 +30,21 @@ html {
   margin-top: 20px;
 }
 
-#bottom {
-  height: auto;
+
+.inner-bottom {
+  display: inline-block;
+  text-align: left;
 }
 
-#likes {
-  height: auto;
-}
-#projects {
-  height: auto;
-}
 
 .lowertext {  
   color: whitesmoke;
 }
 
 ul {
-  height: 100%;
+  width: auto;
   list-style-type: none;
 }
-
 
 .column {
   float: left;
