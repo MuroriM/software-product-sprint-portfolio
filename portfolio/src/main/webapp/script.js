@@ -32,17 +32,19 @@ function playRoulette() {
 /**
  * Fetches comments from a dataservlet and adds to the page
  */
-function displayName() {
-  fetch('/data').then(response => response.json()).then((messages) => {
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
 
     const msgListElement = document.getElementById('msg-container');
     msgListElement.innerHTML = '';
-    for (const idx in messages) {
+
+    for (const idx in comments) {
       msgListElement.appendChild(
-        createListElement(messages[idx]));
+        createListElement(comments[idx].commentText));
     }
   });
 }
+
 
 /** Creates an <li> element containing text. */
 function createListElement(text) {
