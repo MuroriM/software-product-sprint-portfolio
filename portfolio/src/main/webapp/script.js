@@ -27,3 +27,10 @@ function playRoulette() {
   const rouletteContainer = document.getElementById('roulette-container');
   rouletteContainer.innerText = roulette;
 }
+
+
+function displayName() {
+  fetch('/data').then(response => response.text()).then((quote) => {
+    document.getElementById('name-container').innerText = quote;
+  });
+}
