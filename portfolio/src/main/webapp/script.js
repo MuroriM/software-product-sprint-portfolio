@@ -28,22 +28,19 @@ function playRoulette() {
   rouletteContainer.innerText = roulette;
 }
 
+
 /**
- * Fetches greeting from a dataservlet and adds to the page
+ * Fetches comments from a dataservlet and adds to the page
  */
 function displayName() {
   fetch('/data').then(response => response.json()).then((messages) => {
-    // stats is an object, not a string, so we have to
-    // reference its fields to create HTML content
 
     const msgListElement = document.getElementById('msg-container');
     msgListElement.innerHTML = '';
-    msgListElement.appendChild(
-        createListElement(messages[0]));
-    msgListElement.appendChild(
-        createListElement(messages[1]));
-    msgListElement.appendChild(
-        createListElement(messages[2]));
+    for (const idx in messages) {
+      msgListElement.appendChild(
+        createListElement(messages[idx]));
+    }
   });
 }
 

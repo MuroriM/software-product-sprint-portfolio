@@ -25,8 +25,8 @@ html {
   background-position: center center;
 }
 
-#msg-container {
-  padding-left: 5px;
+#comments-container {
+  padding: 5px;
   float: left;
 }
 

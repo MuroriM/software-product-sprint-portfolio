@@ -8,7 +8,15 @@
   </head>
     <body id="body" class="custom" onload="displayName()">
       <div id="links">
-        <div id="msg-container"></div>
+        <div id="comments-container">
+          <h3> Hot Takes</h3>
+          <div id="msg-container"></div>
+          <form action="/data" method="POST">
+            <input name="comment-box" type="text">
+            <br/><br/>
+            <input class="button blue" type="submit"/>
+          </form>
+        </div>
         <button class="button blue" id="top-button" onclick="window.location.href='https://www.linkedin.com/in/murorimutethia/';">LinkedIn</button>
         <button class="button blue" id="top-button" onclick="window.location.href='https://github.com/MuroriM';">Github</button>
       </div>
