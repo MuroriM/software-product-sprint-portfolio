@@ -12,17 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+/**
+ * Adds a random roulette round to the page.
+ */
+function playRoulette() {
+  const rouletteRounds =
+      ['Blank!!!', 'Blank!', 'Blank!!', 'BANG...\n You died!☠☠']
+
+  // Pick a random roulette round.
+  const roulette = rouletteRounds[Math.floor(Math.random() * rouletteRounds.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const rouletteContainer = document.getElementById('roulette-container');
+  rouletteContainer.innerText = roulette;
 }

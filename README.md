@@ -1,12 +1,18 @@
-# Google Software Product Sprint
+Hi,
 
-This repo contains the projects you'll work on throughout SPS.
+Welcome to my Portfolio!
 
-To get started:
+The portfolio is a website and these are the source files for it contained in "software-product-sprint/portfolio/src"
 
-- Login to [Google Cloud Shell](https://ssh.cloud.google.com/cloudshell/editor)
-- Clone this repo: `cd; git clone https://github.com/google/software-product-sprint.git`
-- Open the GitHub setup walkthrough: `teachme ~/software-product-sprint/walkthroughs/week-0-setup/github-setup-walkthrough.md`
-  - If the tutorial panel does not open or display the walkthrough contents, try refreshing the page.
+This portfolio is meant to be deployed on an appengine.
+To run it locally:
+-Go to into the directory: software-product-sprint/portfolio
+-run: mvn package appengine:run
 
-Then follow the on-screen instructions to set up your repo.
+  If it's running properly, there should be a link in the terminal that opens it locally.
+
+To deploy it online:
+-Go to into the directory: software-product-sprint/portfolio
+-run: mvn package appengine:deploy
+
+  If it's running properly, there should be a link in the terminal that opens the website online.
