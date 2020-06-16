@@ -48,8 +48,8 @@ public class DataServlet extends HttpServlet {
       String commentText = (String) entity.getProperty("text");
       long timestamp = (long) entity.getProperty("timestamp");
 
-      Comment comm = new Comment(id, commentText, timestamp);
-      comments.add(comm);
+      Comment comment = new Comment(id, commentText, timestamp);
+      comments.add(comment);
     }
     
     // Send the JSON as the response
@@ -65,7 +65,7 @@ public class DataServlet extends HttpServlet {
     String text = getParameter(request, "comment-box", "");
     long timestamp = System.currentTimeMillis();
     // Add new comment to comment arraylist
-    if (!(text.equals(""))) 
+    if (!text.isEmpty()) 
     {
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         Entity commentEntity = new Entity("Comment");
