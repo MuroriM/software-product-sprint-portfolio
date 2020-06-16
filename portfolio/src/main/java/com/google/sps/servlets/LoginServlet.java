@@ -22,16 +22,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
-public class UsersServlet extends HttpServlet {
+
+@WebServlet("/gologin")
+public class LoginServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
 
     UserService userService = UserServiceFactory.getUserService();
-    boolean logged = userService.isUserLoggedIn();
 
-    response.getWriter().println(logged);
+    String urlToRedirectToAfterUserLogsIn = "/";
+    String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+    response.getWriter().println("<h1>Hello stranger.</h1>");
+    response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
   }
 }

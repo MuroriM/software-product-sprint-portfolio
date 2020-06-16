@@ -52,3 +52,25 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+
+
+
+/*
+ * Fetches stats from the servers and adds them to the DOM.
+ */
+function checkLogin() {
+  fetch('/login').then(response => response.json()).then((logged) => {
+      if (logged) {
+          console.log(logged);
+          getComments();
+      } else {
+          console.log(logged);
+          window.location.replace("/gologin");
+      }
+
+  });
+}
+
+function goLogin() {
+  fetch('/gologin').then(response => response.json()).then((logged) => {});
+}
