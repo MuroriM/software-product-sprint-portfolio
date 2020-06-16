@@ -39,20 +39,26 @@ function getComments() {
     msgListElement.innerHTML = '';
 
     for (const idx in comments) {
+      comment = comments[idx].commentText.concat(' by ', comments[idx].email);
       msgListElement.appendChild(
-        createListElement(comments[idx].commentText));
+        createElement(comment, 'li', 'text'));
     }
   });
 }
 
 
-/** Creates an <li> element containing text. */
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
-}
+/** Creates an element of type 'type' containing text. */
+function createElement(text, elemtype, innertype) {
+  const elem = document.createElement(elemtype);
 
+  if (innertype == 'text') {
+    elem.innerText = text;
+  }
+  else if (innertype == 'html') {
+    elem.innerHTML = text;
+  }
+  return elem;
+}
 
 
 /*
@@ -60,17 +66,22 @@ function createListElement(text) {
  */
 function checkLogin() {
   fetch('/login').then(response => response.json()).then((logged) => {
-      if (logged) {
-          console.log(logged);
-          getComments();
-      } else {
-          console.log(logged);
-          window.location.replace("/gologin");
-      }
+    // Add comments
+    getComments();
 
+    // Hide commenting form if not logged in
+    if (logged[0] == 'true') {
+        document.getElementById("comment_form").style.display = "block";
+    } else {          
+        document.getElementById("comment_form").style.display = "none";
+    }
+
+    // Display greeting and login information
+    var greeting = createElement(logged[1], 'p', 'html');
+    var loginfo = createElement(logged[2], 'p', 'html');
+
+    const logElement = document.getElementById('login');
+    logElement.append(greeting);
+    logElement.append(loginfo);
   });
-}
-
-function goLogin() {
-  fetch('/gologin').then(response => response.json()).then((logged) => {});
 }

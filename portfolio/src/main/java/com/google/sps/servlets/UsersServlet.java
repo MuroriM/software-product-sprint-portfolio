@@ -22,16 +22,48 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import com.google.gson.Gson;
+
 @WebServlet("/login")
 public class UsersServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html");
 
     UserService userService = UserServiceFactory.getUserService();
-    boolean logged = userService.isUserLoggedIn();
+    if (userService.isUserLoggedIn()) {
+      String userEmail = userService.getCurrentUser().getEmail();
+      String urlToRedirectToAfterUserLogsOut = "/";
+      String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
 
-    response.getWriter().println(logged);
+      ArrayList<String> logged = new ArrayList<>();
+
+      String str1 = "<p>Hello " + userEmail + "!</p>";
+      String str2 = "<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>";
+
+      logged.add("true");
+      logged.add(str1);
+      logged.add(str2);
+
+      // Send the JSON as the response
+      response.setContentType("application/json;");
+      String json = new Gson().toJson(logged);
+      response.getWriter().println(json);
+
+    } else {      String urlToRedirectToAfterUserLogsIn = "/";
+      String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+      ArrayList<String> logged = new ArrayList<>();
+
+      logged.add("false");
+      logged.add("<p>Hello stranger.</p>");
+      logged.add("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+
+      // Send the JSON as the response
+      response.setContentType("application/json;");
+      String json = new Gson().toJson(logged);
+      response.getWriter().println(json);
+    }
   }
 }

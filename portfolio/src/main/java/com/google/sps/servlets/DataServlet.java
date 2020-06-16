@@ -29,6 +29,8 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.sps.data.Comment;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -46,9 +48,10 @@ public class DataServlet extends HttpServlet {
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
       String commentText = (String) entity.getProperty("text");
+      String email = (String) entity.getProperty("email");
       long timestamp = (long) entity.getProperty("timestamp");
 
-      Comment comment = new Comment(id, commentText, timestamp);
+      Comment comment = new Comment(id, commentText, email, timestamp);
       comments.add(comment);
     }
     
@@ -61,8 +64,18 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    UserService userService = UserServiceFactory.getUserService();
+
+    // Only logged-in users can post messages
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/");
+      return;
+    }
+    
     // Get the input from the form.
     String text = getParameter(request, "comment-box", "");
+    String email = userService.getCurrentUser().getEmail();
     long timestamp = System.currentTimeMillis();
     // Add new comment to comment arraylist
     if (!text.isEmpty()) 
@@ -70,6 +83,7 @@ public class DataServlet extends HttpServlet {
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         Entity commentEntity = new Entity("Comment");
         commentEntity.setProperty("text", text);
+        commentEntity.setProperty("email", email);
         commentEntity.setProperty("timestamp", timestamp);
         
         datastore.put(commentEntity);
