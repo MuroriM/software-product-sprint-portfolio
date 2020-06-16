@@ -27,3 +27,28 @@ function playRoulette() {
   const rouletteContainer = document.getElementById('roulette-container');
   rouletteContainer.innerText = roulette;
 }
+
+
+/**
+ * Fetches comments from a dataservlet and adds to the page
+ */
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+
+    const msgListElement = document.getElementById('msg-container');
+    msgListElement.innerHTML = '';
+
+    for (const idx in comments) {
+      msgListElement.appendChild(
+        createListElement(comments[idx].commentText));
+    }
+  });
+}
+
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}

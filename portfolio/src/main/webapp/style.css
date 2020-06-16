@@ -25,6 +25,15 @@ html {
   background-position: center center;
 }
 
+#comments-container {
+  padding: 5px;
+  float: left;
+}
+
+#top-button {
+  float: right;
+}
+
 #greeting-container {
   padding-top: 20px;
   margin-top: 20px;
